@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cairiton.painel.domain.repository.UsuarioRepository;
 import com.cairiton.painel.model.Usuario;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -50,13 +51,13 @@ public class UsuarioController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario adicionar(@RequestBody Usuario usuario) {
+	public Usuario adicionar(@Valid  @RequestBody Usuario usuario) {
 		return usuarioRepository.save(usuario);
 
 	}
 	
 	@PutMapping("/{usuarioId}")
-	public ResponseEntity<Usuario> atualizar (@PathVariable Long usuarioId,@RequestBody  Usuario usuario) {
+	public ResponseEntity<Usuario> atualizar (@Valid @PathVariable Long usuarioId,@RequestBody  Usuario usuario) {
 		
 		if (!usuarioRepository.existsById(usuarioId)) {
 			return ResponseEntity.notFound().build();
