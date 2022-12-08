@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Usuario {
+public class Cliente {
 
 	@Id
 	@EqualsAndHashCode.Include
@@ -29,17 +29,19 @@ public class Usuario {
 	private String nome;
 	
 	@NotBlank
+	@Size(max = 20)
+	private String empresa;
+	
+	@NotBlank
 	@Email
 	@Size(max = 60)
 	private String email;
 	
 	@NotBlank
 	@Size(max = 30)
-	private String senha;
-	
-	@NotBlank
-	@Size(max = 20)
 	private String telefone;
+	
+
 	
 	
 }
